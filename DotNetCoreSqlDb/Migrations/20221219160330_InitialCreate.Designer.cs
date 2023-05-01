@@ -24,7 +24,7 @@ namespace DotNetCoreSqlDb.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DotNetCoreSqlDb.Models.Todo", b =>
+            modelBuilder.Entity("DotNetCoreSqlDb.Models.Property", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace DotNetCoreSqlDb.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Todo");
+                    b.ToTable("Property");
                 });
 #pragma warning restore 612, 618
         }

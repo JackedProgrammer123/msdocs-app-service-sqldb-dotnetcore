@@ -9,35 +9,35 @@ using DotNetCoreSqlDb.Models;
 
 namespace DotNetCoreSqlDb.Controllers
 {
-    public class TodosController : Controller
+    public class PropertysController : Controller
     {
         private readonly MyDatabaseContext _context;
 
-        public TodosController(MyDatabaseContext context)
+        public PropertysController(MyDatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: Todos
+        // GET: Propertys
         public async Task<IActionResult> Index()
         {
-            var todos = new List<Todo>();
+            var Propertys = new List<Property>();
 
             // This allows the home page to load if migrations have not been run yet.
             try
             {
-                todos = await _context.Todo.ToListAsync();
+                Propertys = await _context.Property.ToListAsync();
             }
             catch (Exception e)
             {
 
-                return View(todos);
+                return View(Propertys);
             }
 
-            return View(todos);
+            return View(Propertys);
         }
 
-        // GET: Todos/Details/5
+        // GET: Propertys/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,39 +45,39 @@ namespace DotNetCoreSqlDb.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo
+            var Property = await _context.Property
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (todo == null)
+            if (Property == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(Property);
         }
 
-        // GET: Todos/Create
+        // GET: Propertys/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Todos/Create
+        // POST: Propertys/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate")] Todo todo)
+        public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate")] Property Property)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(todo);
+                _context.Add(Property);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(todo);
+            return View(Property);
         }
 
-        // GET: Todos/Edit/5
+        // GET: Propertys/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,22 +85,22 @@ namespace DotNetCoreSqlDb.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo.FindAsync(id);
-            if (todo == null)
+            var Property = await _context.Property.FindAsync(id);
+            if (Property == null)
             {
                 return NotFound();
             }
-            return View(todo);
+            return View(Property);
         }
 
-        // POST: Todos/Edit/5
+        // POST: Propertys/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Todo todo)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,CreatedDate")] Property Property)
         {
-            if (id != todo.ID)
+            if (id != Property.ID)
             {
                 return NotFound();
             }
@@ -109,12 +109,12 @@ namespace DotNetCoreSqlDb.Controllers
             {
                 try
                 {
-                    _context.Update(todo);
+                    _context.Update(Property);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TodoExists(todo.ID))
+                    if (!PropertyExists(Property.ID))
                     {
                         return NotFound();
                     }
@@ -125,10 +125,10 @@ namespace DotNetCoreSqlDb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(todo);
+            return View(Property);
         }
 
-        // GET: Todos/Delete/5
+        // GET: Propertys/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -136,30 +136,30 @@ namespace DotNetCoreSqlDb.Controllers
                 return NotFound();
             }
 
-            var todo = await _context.Todo
+            var Property = await _context.Property
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (todo == null)
+            if (Property == null)
             {
                 return NotFound();
             }
 
-            return View(todo);
+            return View(Property);
         }
 
-        // POST: Todos/Delete/5
+        // POST: Propertys/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var todo = await _context.Todo.FindAsync(id);
-            _context.Todo.Remove(todo);
+            var Property = await _context.Property.FindAsync(id);
+            _context.Property.Remove(Property);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TodoExists(int id)
+        private bool PropertyExists(int id)
         {
-            return _context.Todo.Any(e => e.ID == id);
+            return _context.Property.Any(e => e.ID == id);
         }
     }
 }
