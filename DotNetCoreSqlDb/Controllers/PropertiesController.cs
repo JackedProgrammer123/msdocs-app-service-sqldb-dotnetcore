@@ -9,35 +9,35 @@ using DotNetCoreSqlDb.Models;
 
 namespace DotNetCoreSqlDb.Controllers
 {
-    public class PropertysController : Controller
+    public class PropertiesController : Controller
     {
         private readonly MyDatabaseContext _context;
 
-        public PropertysController(MyDatabaseContext context)
+        public PropertiesController(MyDatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: Propertys
+        // GET: Properties
         public async Task<IActionResult> Index()
         {
-            var Propertys = new List<Property>();
+            var Properties = new List<Property>();
 
             // This allows the home page to load if migrations have not been run yet.
             try
             {
-                Propertys = await _context.Property.ToListAsync();
+                Properties = await _context.Property.ToListAsync();
             }
             catch (Exception e)
             {
 
-                return View(Propertys);
+                return View(Properties);
             }
 
-            return View(Propertys);
+            return View(Properties);
         }
 
-        // GET: Propertys/Details/5
+        // GET: Properties/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,13 +55,13 @@ namespace DotNetCoreSqlDb.Controllers
             return View(Property);
         }
 
-        // GET: Propertys/Create
+        // GET: Properties/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Propertys/Create
+        // POST: Properties/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -77,7 +77,7 @@ namespace DotNetCoreSqlDb.Controllers
             return View(Property);
         }
 
-        // GET: Propertys/Edit/5
+        // GET: Properties/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,7 +93,7 @@ namespace DotNetCoreSqlDb.Controllers
             return View(Property);
         }
 
-        // POST: Propertys/Edit/5
+        // POST: Properties/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -128,7 +128,7 @@ namespace DotNetCoreSqlDb.Controllers
             return View(Property);
         }
 
-        // GET: Propertys/Delete/5
+        // GET: Properties/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,7 +146,7 @@ namespace DotNetCoreSqlDb.Controllers
             return View(Property);
         }
 
-        // POST: Propertys/Delete/5
+        // POST: Properties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

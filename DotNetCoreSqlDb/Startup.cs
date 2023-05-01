@@ -57,7 +57,7 @@ namespace DotNetCoreSqlDb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Propertys}/{action=Index}/{id?}");
+                    pattern: "{controller=Properties}/{action=Index}/{id?}");
             });
         }
     }

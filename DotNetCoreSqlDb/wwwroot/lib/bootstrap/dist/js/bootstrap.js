@@ -48,8 +48,8 @@
       var source = arguments[i] != null ? arguments[i] : {};
       var ownKeys = Object.keys(source);
 
-      if (typeof Object.getOwnPropertySymbols === 'function') {
-        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+      if (typeof Object.getOwnPropertiesymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertiesymbols(source).filter(function (sym) {
           return Object.getOwnPropertyDescriptor(source, sym).enumerable;
         }));
       }
