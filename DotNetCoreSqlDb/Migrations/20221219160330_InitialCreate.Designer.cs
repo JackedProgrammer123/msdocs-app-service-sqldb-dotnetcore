@@ -35,7 +35,13 @@ namespace DotNetCoreSqlDb.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+                    
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+                    
+                    b.Property<string>("Cost")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
