@@ -66,7 +66,7 @@ namespace DotNetCoreSqlDb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Type,Location,Cost,CreatedDate")] Property Property)
+        public async Task<IActionResult> Create([Bind("ID,Type,CreatedDate")] Property Property)
         {
             if (ModelState.IsValid)
             {
